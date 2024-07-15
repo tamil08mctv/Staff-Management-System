@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome to the Home Page</h1>
+   
+    
+    <h2>Staff Entries</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>S.No</th>  
+                <th>Name</th>
+                <th>Department</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Place</th>
+                <th>Photo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for staff in staff %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{ staff.name }}</td>
+                    <td>{{ staff.dept }}</td>
+                    <td>{{ staff.ph_no }}</td>
+                    <td>{{ staff.mail }}</td>
+                    <td>{{ staff.place }}</td>
+                    <td>
+                        {% if staff.photo %}
+                            <img src="{{ staff.photo.url }}" alt="{{ staff.name }}'s photo"  height="100" width="100">
+                        {% else %}
+                            No photo
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'update_details' staff.id %}">
+                            <button class="btn btn-warning">Update</button></a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete_details' staff.id %}">
+                            <button class="btn btn-danger">Delete</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
