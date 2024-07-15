@@ -1,8 +1,22 @@
 from django.shortcuts import render, redirect
 from .models import Staff
+from django.db.models import Q
 
 def home(request):
-    staff = Staff.objects.all()
+    query = request.GET.get('q')
+    if query:
+        staff = Staff.objects.filter(
+            Q(name__icontains=query) |
+            Q(dept__icontains=query) |
+            Q(ph_no__icontains=query) |
+            Q(mail__icontains=query) |
+            Q(place__icontains=query)
+        )
+    else:
+        staff = Staff.objects.all()
+    
+    return render(request, 'home.html', {'staff': staff, 'query': query})
+
 
     return render(request, 'home.html', {'staff': staff})
 
