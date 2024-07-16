@@ -18,7 +18,7 @@ def home(request):
     return render(request, 'home.html', {'staff': staff, 'query': query})
 
 
-    return render(request, 'home.html', {'staff': staff})
+ 
 
 def entrydetails(request):          
     if request.method == "POST":

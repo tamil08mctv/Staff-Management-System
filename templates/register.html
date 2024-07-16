@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="w3-container w3-teal">
+    <h2>Register</h2>
+</div>
+
+{% if success %}
+<div class="alert alert-success" role="alert">
+    {{ success }}
+</div>
+{% endif %}
+{% if alert %}
+<div class="alert alert-danger" role="alert">
+    {{ alert }}
+</div>
+{% endif %}
+{% if caution %}
+<div class="alert alert-warning" role="alert">
+    {{ caution }}
+</div>
+{% endif %}
+
+<form class="w3-container" method="post">
+    {% csrf_token %}
+    <label class="w3-text-teal"><b>First Name</b></label>
+    <input class="w3-input w3-border w3-light-grey" type="text" name="first_name">
+
+    <label class="w3-text-teal"><b>Last Name</b></label>
+    <input class="w3-input w3-border w3-light-grey" type="text" name="last_name">
+
+    <label class="w3-text-teal"><b>User Name</b></label>
+    <input class="w3-input w3-border w3-light-grey" type="text" name="username">
+
+    <label class="w3-text-teal"><b>Email</b></label>
+    <input class="w3-input w3-border w3-light-grey" type="email" name="email">
+
+    <label class="w3-text-teal"><b>Password</b></label>
+    <input class="w3-input w3-border w3-light-grey" type="password" name="password1">
+
+    <label class="w3-text-teal"><b>Confirm Password</b></label>
+    <input class="w3-input w3-border w3-light-grey" type="password" name="password2">
+    <br>
+    <button class="w3-btn w3-blue-grey" type="submit">Register</button>
+</form>
+
+{% endblock content %}

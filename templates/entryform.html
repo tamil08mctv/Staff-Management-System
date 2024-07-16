@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{%if user.is_authenticated%}
 <div class="container">
   <h2>Register New Staff</h2>
   <form action="{% url 'entrydetails' %}" method="post" enctype="multipart/form-data">
@@ -30,4 +31,9 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+{%else%}
+<div class="w3-container w3-border w3-large">
+  <div class="w3-blue"><h1>Login or register first</h6></div>
+</div>
+{%endif%}
 {% endblock %}
