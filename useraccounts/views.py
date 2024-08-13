@@ -46,5 +46,5 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    messages.success(request, "User has been loggedout successfully")
+    messages.success(request, "User has been logged out successfully")
     return redirect('/')
